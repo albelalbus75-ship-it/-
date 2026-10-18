@@ -1,0 +1,6 @@
+{
+  "name": "نظام الحوافز والمكافآت - مجموعة البحري",
+  "description": "نظام إدارة الحوافز والمكافآت والمخالفات الميدانية والإدارية لمجموعة البحري التجارية",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

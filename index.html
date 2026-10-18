@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="ar" dir="rtl" class="overflow-x-hidden max-w-full">
+  <head>
+    <meta charset="UTF-8" />
+    <script>
+      (function () {
+        try {
+          var originalFetch = window.fetch ? window.fetch.bind(window) : undefined;
+          var currentFetch = originalFetch;
+          Object.defineProperty(window, 'fetch', {
+            configurable: true,
+            enumerable: true,
+            get: function () {
+              return currentFetch;
+            },
+            set: function (newFetch) {
+              currentFetch = newFetch;
+            },
+          });
+        } catch (err) {
+          try {
+            var protoFetch = Window.prototype.fetch ? Window.prototype.fetch.bind(window) : undefined;
+            Object.defineProperty(Window.prototype, 'fetch', {
+              configurable: true,
+              enumerable: true,
+              get: function () {
+                return protoFetch;
+              },
+              set: function (newFetch) {
+                protoFetch = newFetch;
+              },
+            });
+          } catch (err2) {}
+        }
+      })();
+    </script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover" />
+    <title>نظام الحوافز والمكافآت - مجموعة البحري</title>
+    <meta name="description" content="نظام إدارة الحوافز والمكافآت والمخالفات الميدانية والإدارية لمجموعة البحري التجارية" />
+    <meta property="og:title" content="نظام الحوافز والمكافآت - مجموعة البحري" />
+    <meta property="og:description" content="نظام إدارة الحوافز والمكافآت والمخالفات الميدانية والإدارية لمجموعة البحري التجارية" />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="theme-color" content="#0c2340" />
+    <meta name="background-color" content="#0c2340" />
+    <meta name="application-name" content="حوافز البحري" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="حوافز البحري" />
+    <link rel="manifest" href="/manifest.json" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="512x512" href="/pwa-512x512.png" />
+    <link rel="icon" type="image/png" sizes="192x192" href="/pwa-192x192.png" />
+    <link rel="icon" type="image/png" sizes="64x64" href="/favicon.png" />
+    <link rel="icon" type="image/svg+xml" href="/icon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  </head>
+  <body class="bg-slate-50 text-slate-900 antialiased font-['Cairo',sans-serif] overflow-x-hidden w-full max-w-full">
+    <div id="root" class="w-full max-w-full overflow-x-hidden"></div>
+    <script type="module" src="/src/main.tsx"></script>
+    <script>
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', function () {
+          navigator.serviceWorker
+            .register('/sw.js', { scope: '/' })
+            .then(function (reg) {
+              reg.update();
+            })
+            .catch(function () {});
+        });
+      }
+    </script>
+  </body>
+</html>

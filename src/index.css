@@ -1,0 +1,227 @@
+@import "tailwindcss";
+
+@layer base {
+  html,
+  body,
+  #root {
+    width: 100%;
+    max-width: 100vw;
+    overflow-x: hidden !important;
+    box-sizing: border-box;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+    min-width: 0;
+  }
+
+  body {
+    font-family: 'Cairo', 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    position: relative;
+  }
+}
+
+/* Mobile Responsive Foundation (360px / 390px and all phones) */
+@media (max-width: 767px) {
+  /* Prevent mobile browser auto-zoom on focus & enforce >=14px readable text */
+  input,
+  select,
+  textarea {
+    font-size: 16px !important;
+    max-width: 100%;
+  }
+
+  button,
+  .btn,
+  label {
+    font-size: 14px !important;
+    max-width: 100%;
+  }
+
+  /* Ensure all modals stay centered and max 95% of mobile viewport width */
+  .fixed.inset-0 > div {
+    max-width: 95vw !important;
+    width: 95vw !important;
+    max-height: 90vh !important;
+    overflow-y: auto !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+
+  /* Ensure table wrappers scroll strictly within their container without moving the page */
+  .overflow-x-auto {
+    max-width: 100% !important;
+    width: 100% !important;
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior-x: contain;
+  }
+
+  /* Ensure action buttons inside table cells wrap cleanly and stay compact */
+  td .flex {
+    flex-wrap: wrap !important;
+    gap: 0.25rem !important;
+  }
+
+  /* Prevent any pre or code block from stretching the page */
+  pre,
+  code {
+    max-width: 100% !important;
+    overflow-x: auto !important;
+    white-space: pre-wrap;
+    word-break: break-word;
+  }
+}
+
+/* Luxury Theme 1: Royal Imperial Gold */
+html[data-theme='royal-gold'] body {
+  background-color: #080c14;
+  color: #f8fafc;
+}
+
+html[data-theme='royal-gold'] .theme-card {
+  background-color: #0f172a;
+  border-color: #3b2f12;
+  box-shadow: 0 4px 20px -2px rgba(212, 175, 55, 0.08);
+}
+
+html[data-theme='royal-gold'] .theme-header {
+  background-color: #0b1120;
+  border-color: #2e240e;
+}
+
+/* Luxury Theme 2: Noble Emerald & Champagne */
+html[data-theme='emerald-luxe'] body {
+  background-color: #031410;
+  color: #f8fafc;
+}
+
+html[data-theme='emerald-luxe'] .theme-card {
+  background-color: #09261f;
+  border-color: #134e3f;
+  box-shadow: 0 4px 20px -2px rgba(16, 185, 129, 0.08);
+}
+
+html[data-theme='emerald-luxe'] .theme-header {
+  background-color: #061e18;
+  border-color: #114235;
+}
+
+/* Luxury Theme 3: Midnight Sapphire & Platinum */
+html[data-theme='sapphire-prestige'] body {
+  background-color: #050d1a;
+  color: #f8fafc;
+}
+
+html[data-theme='sapphire-prestige'] .theme-card {
+  background-color: #0b1d36;
+  border-color: #1e3a68;
+  box-shadow: 0 4px 20px -2px rgba(56, 189, 248, 0.08);
+}
+
+html[data-theme='sapphire-prestige'] .theme-header {
+  background-color: #07152b;
+  border-color: #173059;
+}
+
+/* Luxury Theme 4: Velvet Amethyst & Rose Gold */
+html[data-theme='amethyst-majesty'] body {
+  background-color: #0e0717;
+  color: #f8fafc;
+}
+
+html[data-theme='amethyst-majesty'] .theme-card {
+  background-color: #1a0e2a;
+  border-color: #3b1c5c;
+  box-shadow: 0 4px 20px -2px rgba(192, 132, 252, 0.08);
+}
+
+html[data-theme='amethyst-majesty'] .theme-header {
+  background-color: #140a22;
+  border-color: #30164c;
+}
+
+/* Luxury Theme 5: Contemporary Pearl & Slate */
+html[data-theme='pearl-executive'] body {
+  background-color: #f8fafc;
+  color: #0f172a;
+}
+
+html[data-theme='pearl-executive'] .theme-card {
+  background-color: #ffffff;
+  border-color: #e2e8f0;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.05);
+}
+
+html[data-theme='pearl-executive'] .theme-header {
+  background-color: #ffffff;
+  border-color: #e2e8f0;
+}
+
+/* Gold shimmer effect */
+@keyframes goldShimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.luxury-gold-shimmer {
+  background: linear-gradient(90deg, #d4af37 0%, #fef08a 50%, #d4af37 100%);
+  background-size: 200% auto;
+  color: #000;
+  animation: goldShimmer 4s linear infinite;
+}
+
+/* Luxury Glass Cards */
+.luxury-glass {
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+/* Print Styles */
+@media print {
+  .no-print {
+    display: none !important;
+  }
+  .print-only {
+    display: block !important;
+  }
+  body {
+    background: white !important;
+    color: black !important;
+  }
+  @page {
+    margin: 1.5cm;
+    size: A4 portrait;
+  }
+}
+
+.tabular-nums {
+  font-variant-numeric: tabular-nums;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(148, 163, 184, 0.3);
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(148, 163, 184, 0.5);
+}
